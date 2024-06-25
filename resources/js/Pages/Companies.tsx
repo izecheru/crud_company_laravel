@@ -105,6 +105,9 @@ export default function Companies({ auth, companies }: CompanyPageProps) {
                             className="flex flex-row justify-between gap-3 py-3"
                             key={index}
                         >
+                            <div className="flex flex-row justify-center text-center">
+                                {index + 1}
+                            </div>
                             <div className="flex flex-row justify-center w-1/3 text-center">
                                 {company.name}
                             </div>
@@ -136,10 +139,12 @@ export default function Companies({ auth, companies }: CompanyPageProps) {
                     ))}
                 </div>
             </div>
-            <PaginationComponent
-                pagination={companies}
-                onPageChange={handlePageChange}
-            />
+            <div className="flex flex-row items-center justify-center pb-5">
+                <PaginationComponent
+                    pagination={companies}
+                    onPageChange={handlePageChange}
+                />
+            </div>
         </AuthenticatedLayout>
     );
 }

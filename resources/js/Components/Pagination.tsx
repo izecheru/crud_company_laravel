@@ -1,5 +1,3 @@
-import React from "react";
-import { Link } from "@inertiajs/react";
 import { Pagination } from "@/types";
 
 interface PaginationProps {
@@ -7,10 +5,10 @@ interface PaginationProps {
     onPageChange: (url: string) => void;
 }
 
-const PaginationComponent: React.FC<PaginationProps> = ({
+export default function PaginationComponent({
     pagination,
     onPageChange,
-}) => {
+}: PaginationProps) {
     const { current_page, last_page, links } = pagination;
 
     const handlePageChange = (url: string | null) => {
@@ -41,7 +39,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
                         onClick={() => handlePageChange(link.url)}
                         className={`relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium ${
                             link.active
-                                ? "bg-blue-500 text-white"
+                                ? "bg-blue-500 text-black text-xl"
                                 : "text-gray-500 hover:bg-gray-50"
                         }`}
                         dangerouslySetInnerHTML={{ __html: link.label }}
@@ -60,6 +58,4 @@ const PaginationComponent: React.FC<PaginationProps> = ({
             </nav>
         </div>
     );
-};
-
-export default PaginationComponent;
+}
